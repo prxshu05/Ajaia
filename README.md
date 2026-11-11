@@ -2,7 +2,7 @@
 
 A lightweight collaborative document editor: create and format documents in the browser, import existing files, and share them with teammates as viewers or editors.
 
-**Live app:** `<LIVE_URL>` · **Walkthrough video:** see [`VIDEO_URL.txt`](VIDEO_URL.txt)
+**Live app:** https://ajaia-docs-25s9.onrender.com (free hosting: the first load after about 15 minutes idle can take up to a minute while the server wakes) · **Walkthrough video:** see [`VIDEO_URL.txt`](VIDEO_URL.txt)
 
 ## Demo accounts
 

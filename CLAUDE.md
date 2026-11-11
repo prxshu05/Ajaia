@@ -12,8 +12,8 @@
 > |---|---|---|
 > | Language | JavaScript | TypeScript (Node runs `.ts` directly; client bundled by Vite) |
 > | Backend / auth | Supabase Auth + RLS, no server | Express API, scrypt + cookie sessions; access checked in one server-side query (`getAccessibleDoc`) |
-> | Database | Supabase Postgres, `content jsonb` | Postgres: embedded PGlite locally/tests, `DATABASE_URL` in prod; `content` is sanitised HTML |
-> | Deploy | Vercel | Render (`render.yaml`) or Docker |
+> | Database | Supabase Postgres, `content jsonb` | Postgres: embedded PGlite locally and in tests; Supabase Postgres (`ajaia-docs`, session pooler) in production via `DATABASE_URL`; `content` is sanitised HTML; RLS on with no policies (locks out Supabase's REST API) |
+> | Deploy | Vercel | Render free plan (`render.yaml`), live at https://ajaia-docs-25s9.onrender.com; Docker also supported |
 > | Roles | All collaborators can edit | Owner / editor / viewer |
 > | Import | `.txt`, `.md`, 1 MB | `.txt`, `.md`, `.docx`, 2 MB |
 > | Headings | H1–H2 | H1–H3 (H4–H6 → H3) |
