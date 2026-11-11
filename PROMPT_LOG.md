@@ -154,3 +154,12 @@ This log is append-only and truthful. Times come from file timestamps and git an
 - **Issues found & fixed:** none.
 - **Human decision:** recorded and uploaded the walkthrough video to Google Drive and shared it by link. The two asks from entry 5 are still pending: the manual two-user test, and any personal review or changes not yet logged.
 - **Commit:** "docs: add walkthrough video link (prompt log #10)"
+
+### 11. Final submission Markdown for the portal (about 20:40)
+- **Prompt (verbatim):** "i need to submitt a submiission .md https://drive.google.com/drive/folders/1rYQjajzEesgA5j8GUtNwlfqzOPpcpppP?usp=sharing this is the full loink give me the correct one here in the chatSubmission (Markdown, max 1000 lines)"
+- **Plan:** check that the Drive folder is public, fill in its link, and give the final portal Markdown in chat.
+- **What I (Claude Code) did:** filled the Drive folder link into `SUBMISSION_FORM.md` and gave the full text in chat.
+- **Verification:** a logged-out request to the folder link returned 200 with the title "Ajaia-Submission – Google Drive", and the page listed README, SUBMISSION, ARCHITECTURE, AI_WORKFLOW, PROMPT_LOG and VIDEO_URL. The form text has no placeholders left and is under 1000 lines.
+- **Issues found & fixed:** none. Note: this entry was written after the folder was uploaded, so the Drive copy of `PROMPT_LOG.md` stops at entry 10. GitHub has the full log.
+- **Human decision:** uploaded the submission folder to Google Drive and shared it by link. The asks from entry 5 were never answered (manual two-user test, personal review or changes).
+- **Commit:** "docs: log final submission step (prompt log #11)"
