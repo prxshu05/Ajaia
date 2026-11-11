@@ -92,3 +92,20 @@ This log is append-only and truthful. Times come from file timestamps and git an
 - **Issues found & fixed:** none.
 - **Human decision:** approved the GitHub device login in the browser. The entry-5 asks are still pending: the manual two-user test, and any personal review or changes not yet in the log.
 - **Commit:** "docs: log GitHub push (prompt log #6)"
+
+### 7. Render deploy ran out of memory (about 19:20)
+- **Prompt (verbatim):** the Render deploy log, pasted with no other instructions. It ended with "Out of memory (used over 512Mi)" after `npm start`.
+- **Plan:** measure, don't guess. Find what uses memory at boot, test fixes, and switch production to hosted Postgres if the embedded DB can't fit.
+- **What I (Claude Code) did:**
+  - Measured startup memory: about 1.1 GB on a fresh DB.
+  - Probed PGlite: first boot about 1.0 GB, reopening an existing DB 335 MB. Smaller Postgres buffers gave 650 MB, V8 wasm flags made no difference, and booting from a snapshot peaked at 496 MB. Conclusion: PGlite can't run on 512 MB, because Render wipes the disk on every deploy, so every boot is a first boot.
+  - With the human's approval, created the Supabase project `ajaia-docs` (ap-south-1, $0).
+  - Code changes: RLS enabled on all 4 tables, since Supabase auto-exposes `public` over REST; `render.yaml` starts `node` directly (saves the npm wrapper) and documents `DATABASE_URL` as required; a fail-fast check in `index.ts` when `RENDER` is set without `DATABASE_URL`.
+  - Updated README, ARCHITECTURE and AI_WORKFLOW.
+- **Verification:** `npm test` 9/9, typecheck clean, build OK. `RENDER=true node server/src/index.ts` printed the clear error and exited 1.
+- **Issues found & fixed:**
+  1. The OOM itself: the AI-chosen production fallback was never tested under a 512 MB limit.
+  2. My first RLS edit put a `;` inside a SQL comment, which broke `migrate()` because it splits on `;`. The test run caught it, and the comment moved to TypeScript.
+  3. Temporary probe scripts were deleted from the repo.
+- **Human decision:** chose "New Supabase project" over restoring the paused project or setting it up themselves. Pending: paste the Supabase session-pooler URI into Render's `DATABASE_URL` (it needs the DB password, which only the human can get).
+- **Commit:** "fix(deploy): use Supabase Postgres on Render; lock tables with RLS; fail fast without DATABASE_URL"

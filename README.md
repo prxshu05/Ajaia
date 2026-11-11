@@ -69,13 +69,17 @@ There's also a browser smoke test, [`scripts/e2e-smoke.mjs`](scripts/e2e-smoke.m
 | Variable | Default | Purpose |
 |---|---|---|
 | `PORT` | `3001` | HTTP port |
-| `DATABASE_URL` | unset | Postgres connection string. If unset, embedded PGlite is used |
+| `DATABASE_URL` | unset | Postgres connection string. If unset, embedded PGlite is used (local dev only; needs about 1 GB RAM on first boot) |
 | `DATA_DIR` | `./data/pglite` | PGlite data directory, used when `DATABASE_URL` is unset |
 
 ## Deploy
 
-**Render (free, no card):** push this repo to GitHub, then in Render choose **New → Blueprint** and select the repo. [`render.yaml`](render.yaml) configures the build and the health check.
-- **Optional:** set `DATABASE_URL` to a free Supabase or Neon Postgres for durable storage. Without it, data persists across refreshes but resets to the seed data whenever Render's free instance restarts.
+**Render (free, no card) with Supabase Postgres:**
+1. Push this repo to GitHub, then in Render choose **New → Blueprint** and select the repo. [`render.yaml`](render.yaml) configures the build, start command and health check.
+2. Create a free Supabase project. In **Connect → Session pooler**, copy the URI, which uses port 5432 and IPv4. Replace `[YOUR-PASSWORD]` with the database password, which you can reset under *Project Settings → Database*.
+3. Paste that URI into the Render service's `DATABASE_URL` setting. On first boot the app creates its tables and seeds the demo users. RLS is switched on, so Supabase's auto-generated REST API can't read them.
+
+`DATABASE_URL` is **required on Render's free plan**. Creating a fresh embedded database peaks at about 1 GB of RAM (measured), which exceeds the 512 MB instance. Without it, the server exits with a clear message instead of crashing in a loop.
 
 **Any container host:** use the [`Dockerfile`](Dockerfile), and mount a volume at `/data` or set `DATABASE_URL`.
 

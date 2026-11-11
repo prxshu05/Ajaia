@@ -37,6 +37,10 @@ export async function openDb(opts: { databaseUrl?: string; dataDir?: string } = 
   };
 }
 
+// Note: migrate() splits this on ';', so keep semicolons out of SQL comments.
+// The ALTER TABLE ... ENABLE ROW LEVEL SECURITY lines lock out hosted-Postgres REST APIs (e.g. Supabase
+// exposes the public schema automatically). With RLS on and no policies that API gets no rows, while
+// the app itself connects as the table owner, which bypasses RLS.
 const SCHEMA = `
 CREATE TABLE IF NOT EXISTS users (
   id            TEXT PRIMARY KEY,
@@ -71,6 +75,11 @@ CREATE TABLE IF NOT EXISTS document_shares (
   PRIMARY KEY (document_id, user_id)
 );
 CREATE INDEX IF NOT EXISTS document_shares_user_idx ON document_shares(user_id);
+
+ALTER TABLE users ENABLE ROW LEVEL SECURITY;
+ALTER TABLE sessions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE documents ENABLE ROW LEVEL SECURITY;
+ALTER TABLE document_shares ENABLE ROW LEVEL SECURITY;
 `;
 
 export const SEED_PASSWORD = 'password123';

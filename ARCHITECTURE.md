@@ -72,5 +72,5 @@ The brief stresses depth over breadth, so I went deep on the paths a reviewer wi
 
 - **Polling scope.** It runs every 8 s per open document, which is fine for a small team but not for many concurrent users. The real fix is WebSockets or SSE.
 - **Shared user directory.** `/api/users` lists every user for share autocomplete. In a multi-tenant product it would be scoped to an organisation.
-- **Free hosting without `DATABASE_URL`.** On Render's free tier, PGlite lives on an ephemeral disk, so data resets to the seed on restart. Set `DATABASE_URL` for durability.
-- **Testing gap on the `pg` path.** The tests run on PGlite. The `pg` code path uses the same SQL, but only the deployed instance exercises it.
+- **PGlite memory.** Creating a fresh PGlite database peaks at about 1 GB of RAM (measured: 335 MB when reopening an existing one). The first Render deploy ran out of memory on the free 512 MB instance, so production uses Supabase Postgres via `DATABASE_URL`, and PGlite is for local dev and tests only.
+- **Testing gap on the `pg` path.** The tests run on PGlite. The `pg` path (Supabase) uses the same SQL, but only the deployed instance exercises it.

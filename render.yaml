@@ -5,13 +5,16 @@ services:
     runtime: node
     plan: free
     buildCommand: npm ci --include=dev && npm run build
-    startCommand: npm start
+    # Run node directly (not via npm) to save ~40 MB on the 512 MB free instance.
+    startCommand: node server/src/index.ts
     healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
         value: "24"
-      # Optional but recommended: a free Postgres URL (Supabase / Neon) for durable storage.
-      # Without it the app uses embedded PGlite on Render's ephemeral disk: data survives
-      # page refreshes, but resets to the seed data when the free instance restarts.
+      - key: NODE_ENV
+        value: production
+      # REQUIRED on Render's free plan: a Postgres URL (Supabase session pooler / Neon).
+      # The embedded PGlite fallback peaks at ~1 GB while creating a fresh database, and the free
+      # instance (512 MB, wiped on every deploy) runs out of memory. PGlite is for local dev/tests.
       - key: DATABASE_URL
         sync: false

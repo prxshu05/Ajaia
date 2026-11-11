@@ -29,6 +29,7 @@ All of these are from log #1. Each was caught by a test, a type check, request l
 | `/api/auth/me` returning 401 when logged out | Every visit to the login page logged a console error | Returns `{ user: null }` |
 | Single `tsconfig` for server and client | Client imports failed to typecheck under `nodenext` resolution | Separate configs for Node and the bundler |
 | Editor CSS | The screenshot showed paragraphs crammed under headings, because a more specific `p { margin: 0 }` overrode the spacing rule | Fixed the selector specificity |
+| Embedded PGlite as the zero-config production fallback (log #7) | **Missed by local verification; caught by the real deploy.** Render's free 512 MB instance ran out of memory on boot. Measuring showed that creating a fresh PGlite database peaks at about 1 GB, and my machine had enough RAM to hide it | Production uses Supabase Postgres via `DATABASE_URL`. The server exits with a clear message if that's missing on Render. Tables are locked with RLS against Supabase's public REST API |
 | Real-time co-editing with Yjs (considered) | Too big for the timebox, and it would have crowded out depth elsewhere | Optimistic concurrency with conflict prompts and polling, documented as the next upgrade |
 
 ## How correctness, UX and reliability were verified
