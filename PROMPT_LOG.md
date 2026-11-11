@@ -132,3 +132,16 @@ This log is append-only and truthful. Times come from file timestamps and git an
   2. The safety check blocked a heredoc-based command (no deletion was in it). Rewrote the script with the file tool instead.
 - **Human decision:** set `DATABASE_URL` in Render (the password was handled only by the human, never shared in chat), corrected the host to `aws-1`, and confirmed the live URL. The two asks from entry 5 are still pending: the manual two-user test, and any personal review or changes not yet in the log.
 - **Commit:** "docs: add live URL; log Supabase connection and live verification (prompt log #8)"
+
+### 9. Submission folder, video script and form text (about 19:55)
+- **Prompt (verbatim):** "what all i need to submit kept that in folder and give me the script for the video and", followed by the assignment page text from the submission portal (video link field, "Submission (Markdown, max 1000 lines)" field).
+- **Plan:** build an upload-ready folder from exactly what's committed; write a spoken video script; write the Markdown for the portal's submission box.
+- **What I (Claude Code) did:**
+  - Generated `docs/sample-import.docx` (headings, bold, italic, underline, bullet and numbered lists) for the demo and reviewers.
+  - Added the GitHub repo link and the `.docx` sample to README and SUBMISSION.
+  - Rewrote `VIDEO_SCRIPT.md` as a timed, spoken script. Wrote `SUBMISSION_FORM.md` for the portal box. Both are gitignored, not part of the Drive folder.
+  - Exported `git archive HEAD` to `~/Downloads/Ajaia-Submission/`.
+- **Verification:** the `.docx` converts through the importer's mammoth settings to the expected `<h1>/<h2>/<strong>/<em>/<u>/<ul>/<ol>`. In a scratch copy of the exported folder: `npm ci`, `npm test` and `npm run build` (results in the commit for this entry).
+- **Issues found & fixed:** none.
+- **Human decision:** pending. Still needed: the video link, the Drive folder link, the manual two-user test, and any personal review or changes not yet logged.
+- **Commit:** "docs: sample .docx, repo link, submission prep (prompt log #9)"

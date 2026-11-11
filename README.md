@@ -2,7 +2,7 @@
 
 A lightweight collaborative document editor: create and format documents in the browser, import existing files, and share them with teammates as viewers or editors.
 
-**Live app:** https://ajaia-docs-25s9.onrender.com (free hosting: the first load after about 15 minutes idle can take up to a minute while the server wakes) · **Walkthrough video:** see [`VIDEO_URL.txt`](VIDEO_URL.txt)
+**Live app:** https://ajaia-docs-25s9.onrender.com (free hosting: the first load after about 15 minutes idle can take up to a minute while the server wakes) · **Source:** https://github.com/prxshu05/Ajaia · **Walkthrough video:** see [`VIDEO_URL.txt`](VIDEO_URL.txt)
 
 ## Demo accounts
 
@@ -21,7 +21,7 @@ All accounts use the password **`password123`**. The login page also has one-cli
 3. Click **Share** and add `carol@ajaia.test` with **Can view**.
 4. In a private window, sign in as Carol. The doc appears under **Shared with me**, is read-only, and shows no toolbar.
 5. As Alice, change Carol to **Can edit**. Carol reloads and can now edit. Alice sees Carol's changes appear within about 8 seconds.
-6. Click **Import file** and upload [`docs/sample-import.md`](docs/sample-import.md) or any `.docx`/`.txt` file.
+6. Click **Import file** and upload [`docs/sample-import.docx`](docs/sample-import.docx) or [`docs/sample-import.md`](docs/sample-import.md), or any `.docx`/`.md`/`.txt` file of your own.
 
 ## Features
 

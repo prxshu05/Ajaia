@@ -3,6 +3,7 @@
 | Item | Location |
 |---|---|
 | Live product URL | https://ajaia-docs-25s9.onrender.com. Hosted on Render's free plan with Supabase Postgres; the first load after idle can take up to a minute |
+| Source repository | https://github.com/prxshu05/Ajaia (same content as this folder) |
 | Walkthrough video | [`VIDEO_URL.txt`](VIDEO_URL.txt) |
 | Test accounts | `alice@ajaia.test`, `bob@ajaia.test`, `carol@ajaia.test`, all with password `password123` (one-click buttons on the login page) |
 
@@ -21,7 +22,7 @@
 | `client/` | React + TipTap frontend |
 | `scripts/e2e-smoke.mjs` | Headless-Chrome end-to-end script that also produces the screenshots |
 | `docs/screenshots/` | 9 screenshots of the main flows (login, list, editor, share, shared-with-me, view-only, live update, conflict, import) |
-| `docs/sample-import.md` | Sample file for trying the import feature |
+| `docs/sample-import.md`, `docs/sample-import.docx` | Sample files for trying the import feature (Markdown and Word) |
 | `package.json`, `package-lock.json` | Dependencies and scripts (`dev`, `build`, `start`, `test`, `typecheck`) |
 | `render.yaml`, `Dockerfile`, `.node-version` | Deployment configuration |
 | `tsconfig.json`, `client/tsconfig.json`, `vite.config.ts`, `vitest.config.ts` | Tooling configuration |
