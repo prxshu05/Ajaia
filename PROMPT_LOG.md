@@ -141,7 +141,7 @@ This log is append-only and truthful. Times come from file timestamps and git an
   - Added the GitHub repo link and the `.docx` sample to README and SUBMISSION.
   - Rewrote `VIDEO_SCRIPT.md` as a timed, spoken script. Wrote `SUBMISSION_FORM.md` for the portal box. Both are gitignored, not part of the Drive folder.
   - Exported `git archive HEAD` to `~/Downloads/Ajaia-Submission/`.
-- **Verification:** the `.docx` converts through the importer's mammoth settings to the expected `<h1>/<h2>/<strong>/<em>/<u>/<ul>/<ol>`. In a scratch copy of the exported folder: `npm ci`, `npm test` and `npm run build` (results in the commit for this entry).
+- **Verification:** the `.docx` converts through the importer's mammoth settings to the expected `<h1>/<h2>/<strong>/<em>/<u>/<ul>/<ol>`. In a scratch copy of the exported folder (49 files, 896 KB): `npm ci` OK, `npm test` 9/9 passed, `npm run build` OK.
 - **Issues found & fixed:** none.
 - **Human decision:** pending. Still needed: the video link, the Drive folder link, the manual two-user test, and any personal review or changes not yet logged.
 - **Commit:** "docs: sample .docx, repo link, submission prep (prompt log #9)"
