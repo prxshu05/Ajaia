@@ -83,3 +83,12 @@ This log is append-only and truthful. Times come from file timestamps and git an
 - **Issues found & fixed:** `AI_WORKFLOW.md` overstated the human's role in the build decisions. Rewritten to match the log.
 - **Human decision:** chose **"Keep app, adopt process"**: keep the existing app; save CLAUDE.md with a deviations note; add an accurate prompt log and video script; then push and deploy.
 - **Commit:** "docs: add prompt log, planning spec with as-built notes, AI workflow corrections"
+
+### 6. Push to GitHub (about 19:15)
+- **Prompt (verbatim):** "can uh push it to my github"
+- **Plan:** `gh` was installed but not logged in, so start the browser device login, then connect git to it and push.
+- **What I (Claude Code) did:** ran `gh auth login --web`, which printed a one-time code and opened github.com/login/device for the human to approve. Then ran `gh auth setup-git` and `git push -u origin main`.
+- **Verification:** `gh auth status` showed "Logged in as prxshu05". The push created `main` on origin. `git status` showed `main...origin/main` in sync. The repo is PUBLIC.
+- **Issues found & fixed:** none.
+- **Human decision:** approved the GitHub device login in the browser. The entry-5 asks are still pending: the manual two-user test, and any personal review or changes not yet in the log.
+- **Commit:** "docs: log GitHub push (prompt log #6)"
