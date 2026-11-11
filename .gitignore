@@ -3,3 +3,4 @@ client/dist
 data
 .env
 .DS_Store
+VIDEO_SCRIPT.md

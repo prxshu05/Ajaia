@@ -1,8 +1,11 @@
 # AI workflow note
 
+This note is based on [`PROMPT_LOG.md`](PROMPT_LOG.md), the append-only record of every prompt in the build. "Log #N" refers to its entries.
+
 ## Tools used
 
-- **Claude Code** (Claude Opus 5.5, in VS Code) was the main tool. It scaffolded the project, wrote most of the code and docs, ran the tests, and drove a headless browser to check the UI.
+- **Claude Code** (Claude Opus 5.5, in VS Code) was the main tool. It scaffolded the project, wrote the code and docs, ran the tests, and drove a headless browser to check the UI (log #1–#5).
+- **Claude (chat)** was used to draft a planning spec (`CLAUDE.md`, log #0). It reached Claude Code only after the app was built, so its process rules (this log, checkpoints) were adopted from then on, but not its stack (log #5).
 - **Headless Chrome via puppeteer-core** was used for the browser smoke test (`scripts/e2e-smoke.mjs`), which checked the AI-written UI the way a user would.
 
 ## Where AI materially sped things up
@@ -14,7 +17,7 @@
 
 ## What was changed or rejected
 
-Each of these was caught by a test, a type check, request logging or a screenshot. None was found by reading the code.
+All of these are from log #1. Each was caught by a test, a type check, request logging or a screenshot. None was found by reading the code.
 
 | AI output | Problem | Fix |
 |---|---|---|
@@ -43,4 +46,13 @@ Each of these was caught by a test, a type check, request logging or a screensho
 3. **Screenshot review.** Every screenshot in `docs/screenshots` was looked at, not just generated. That's how the spacing bug was caught.
 4. **Typecheck** (`npm run typecheck`) on server and client, and a production build.
 
-The judgment calls were mine: what to cut, accepting conflicts instead of building a CRDT, choosing 404 over 403 for no access, and keeping HTML as the storage format. AI produced options and code quickly. Everything shipped was run, not just read.
+## Human decisions
+
+As recorded in the log:
+- **Planning (log #0).** I drafted a scope and stack plan with Claude (chat).
+- **Keep the app (log #5).** The plan arrived after Claude Code had already built the app from the brief, with its own choices of stack, scope and roles (log #1). I chose to keep the built app over rebuilding to my plan, because it was working, tested, and covered more of the brief. From then on I adopted the plan's process: this prompt log and its checkpoints.
+- **GitHub (log #3–#4).** I chose the GitHub repo and set up credentials for pushing.
+
+The log is honest that in log #1 most technical decisions were made by the AI and verified by running the product, not by me reviewing each one. If I reviewed or overrode anything, it gets its own log entry.
+
+<!-- Prasanna: add anything you personally checked, changed or rejected that isn't in the log yet. Keep it accurate. -->

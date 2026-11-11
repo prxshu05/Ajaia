@@ -13,6 +13,8 @@
 | `README.md` | Overview, demo accounts, local setup and run instructions, deployment, status (working / not built / next steps) |
 | `ARCHITECTURE.md` | Architecture note: design, data model, key decisions, priorities, deliberate cuts, risks |
 | `AI_WORKFLOW.md` | AI workflow note: tools, where AI helped, what was changed or rejected, how it was verified |
+| `PROMPT_LOG.md` | Append-only log of every prompt given to Claude Code, what it did, issues found, and human decisions |
+| `CLAUDE.md` | Planning spec drafted with Claude (chat), with an as-built section noting where the shipped app differs |
 | `SUBMISSION.md` | This file |
 | `VIDEO_URL.txt` | Link to the 3–5 minute walkthrough video |
 | `server/` | Express API: `src/` (app, auth, content import and sanitisation, db) and `test/` (API integration tests) |
