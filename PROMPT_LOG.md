@@ -145,3 +145,12 @@ This log is append-only and truthful. Times come from file timestamps and git an
 - **Issues found & fixed:** none.
 - **Human decision:** pending. Still needed: the video link, the Drive folder link, the manual two-user test, and any personal review or changes not yet logged.
 - **Commit:** "docs: sample .docx, repo link, submission prep (prompt log #9)"
+
+### 10. Add the walkthrough video link (about 20:30)
+- **Prompt (verbatim):** "this is my vifro linkhttps://drive.google.com/file/d/17QSpqviOdTeKF1Zr6YfD2n8QHZhHELIq/view?usp=sharing"
+- **Plan:** check the link opens without signing in, then add it to `VIDEO_URL.txt`, README, SUBMISSION and the portal text, and re-sync the submission folder.
+- **What I (Claude Code) did:** filled the link into `VIDEO_URL.txt`, `README.md`, `SUBMISSION.md` and `SUBMISSION_FORM.md` (the last is gitignored). Re-exported the changed files to `~/Downloads/Ajaia-Submission/`.
+- **Verification:** a logged-out request to the link returned 200 with the title "videoo.mov - Google Drive", so it's viewable without a Google login. Claude Code did not watch the video.
+- **Issues found & fixed:** none.
+- **Human decision:** recorded and uploaded the walkthrough video to Google Drive and shared it by link. The two asks from entry 5 are still pending: the manual two-user test, and any personal review or changes not yet logged.
+- **Commit:** "docs: add walkthrough video link (prompt log #10)"

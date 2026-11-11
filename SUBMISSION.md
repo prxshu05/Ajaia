@@ -4,7 +4,7 @@
 |---|---|
 | Live product URL | https://ajaia-docs-25s9.onrender.com. Hosted on Render's free plan with Supabase Postgres; the first load after idle can take up to a minute |
 | Source repository | https://github.com/prxshu05/Ajaia (same content as this folder) |
-| Walkthrough video | [`VIDEO_URL.txt`](VIDEO_URL.txt) |
+| Walkthrough video | https://drive.google.com/file/d/17QSpqviOdTeKF1Zr6YfD2n8QHZhHELIq/view?usp=sharing (also in `VIDEO_URL.txt`) |
 | Test accounts | `alice@ajaia.test`, `bob@ajaia.test`, `carol@ajaia.test`, all with password `password123` (one-click buttons on the login page) |
 
 ## Included in this folder
