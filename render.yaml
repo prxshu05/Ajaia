@@ -1,0 +1,17 @@
+# Render Blueprint: New > Blueprint > pick this repo. Free plan, no credit card needed.
+services:
+  - type: web
+    name: ajaia-docs
+    runtime: node
+    plan: free
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      # Optional but recommended: a free Postgres URL (Supabase / Neon) for durable storage.
+      # Without it the app uses embedded PGlite on Render's ephemeral disk: data survives
+      # page refreshes, but resets to the seed data when the free instance restarts.
+      - key: DATABASE_URL
+        sync: false
